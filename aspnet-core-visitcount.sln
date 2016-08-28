@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{383469B7-E85
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81BEB74D-5B6B-49B9-B16A-DA1AB4F33F49}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		global.json = global.json
 		manifest.yml = manifest.yml
 		README.md = README.md

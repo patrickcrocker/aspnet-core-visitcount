@@ -14,11 +14,16 @@ namespace aspnet_core_visitcount.Controllers
         {
             _cache = new CachManager();
         }
+
+        void SetPageVisitCounterViewDate(string page)
+        {
+            var pageVisitCount = _cache.GetPageVisitCounter(page);
+            ViewData["PageVisitCount"] = pageVisitCount >0 ? pageVisitCount.ToString() :"Please bind Redis service.";
+        }
+
         public IActionResult Index()
         {
-            var pageVisitCount = _cache.GetPageVisitCounter("Index");
-            ViewData["PageVisitCount"] = pageVisitCount;
-
+            SetPageVisitCounterViewDate("Index");
             return View();
         }
 
@@ -26,8 +31,7 @@ namespace aspnet_core_visitcount.Controllers
         {
             ViewData["Message"] = "Your application description page.";
 
-            var pageVisitCount = _cache.GetPageVisitCounter("About");
-            ViewData["PageVisitCount"] = pageVisitCount;
+            SetPageVisitCounterViewDate("About");
 
             return View();
         }
@@ -36,8 +40,7 @@ namespace aspnet_core_visitcount.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
-            var pageVisitCount = _cache.GetPageVisitCounter("Contact");
-            ViewData["PageVisitCount"] = pageVisitCount;
+            SetPageVisitCounterViewDate("Contact");
 
             return View();
         }

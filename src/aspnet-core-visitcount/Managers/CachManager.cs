@@ -11,17 +11,46 @@ namespace aspnet_core_visitcount.Managers
     public class CachManager
     {
         ConnectionMultiplexer _redis;
-        public CachManager()
-        {
-            //_redis = ConnectionMultiplexer.Connect("localhost");
-            //{"p-redis":[{"credentials":{"host":"redis.local.pcfdev.io","password":"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a","port":36053}
-            //"host":"redis.local.pcfdev.io","password":"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a","port":36053}
 
-            var connectionString = getRedisConnString();
-            _redis = ConnectionMultiplexer.Connect(connectionString);
+        public int GetPageVisitCounter(string pageName)
+        {
+            int returnValue = 0;
+            try
+            {
+                if(_redis == null)
+                {
+                    //_redis = ConnectionMultiplexer.Connect("localhost");
+                    //{"p-redis":[{"credentials":{"host":"redis.local.pcfdev.io","password":"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a","port":36053}
+                    //"host":"redis.local.pcfdev.io","password":"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a","port":36053}
+                    var connectionString = getRedisConnString();
+                    _redis = ConnectionMultiplexer.Connect(connectionString);
+                }
+
+                Console.WriteLine("[GetPageVisitCounter] in");
+
+                IDatabase db = _redis.GetDatabase();
+                string key = pageName + "-Counter";
+
+                Console.WriteLine("[GetPageVisitCounter] key={0}", key);
+
+                string counterString = db.StringGet(key);
+                int.TryParse(counterString, out returnValue);
+                returnValue++;
+                db.StringSet(key, returnValue.ToString());
+
+                Console.WriteLine("[GetPageVisitCounter] {0}", returnValue);
+            }
+            catch (Exception ex)
+            {
+                returnValue = -1;
+                Console.WriteLine("[GetPageVisitCounter] Exception");
+                Console.WriteLine(ex.ToString());
+            }
+
+            return returnValue;
         }
 
-        public static string GetIpFromHost(string hostname)
+        string GetIpFromHost(string hostname)
         {
             string ipString = "";
             IPAddress[] ips;
@@ -66,35 +95,6 @@ namespace aspnet_core_visitcount.Managers
 
             Console.WriteLine("[redis-connectionString] {0}", connectionString);
             return connectionString;
-        }
-
-        public int GetPageVisitCounter(string pageName)
-        {
-            int returnValue = 0;
-            try
-            {
-                Console.WriteLine("[GetPageVisitCounter] in");
-
-                IDatabase db = _redis.GetDatabase();
-                string key = pageName + "-Counter";
-
-                Console.WriteLine("[GetPageVisitCounter] key={0}", key);
-
-                string counterString = db.StringGet(key);
-                int.TryParse(counterString, out returnValue);
-                returnValue++;
-                db.StringSet(key, returnValue.ToString());
-
-                Console.WriteLine("[GetPageVisitCounter] {0}", returnValue);
-            }
-            catch (Exception ex)
-            {
-                returnValue = -1;
-                Console.WriteLine("[GetPageVisitCounter] Exception");
-                Console.WriteLine(ex.ToString());
-            }
-
-            return returnValue;
         }
     }
 }
