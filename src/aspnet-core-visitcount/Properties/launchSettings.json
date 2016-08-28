@@ -1,0 +1,28 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:8336/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "aspnet_core_visitcount": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "VCAP_SERVICES": "{\"p-redis\":[{\"credentials\":{\"host\":\"redis.local.pcfdev.io\",\"password\":\"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a\",\"port\":36053},\"syslog_drain_url\":null,\"label\":\"p-redis\",\"provider\":null,\"plan\":\"shared-vm\",\"name\":\"core-redis\",\"tags\":[\"pivotal\",\"redis\"]}]}",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
