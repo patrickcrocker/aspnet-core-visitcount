@@ -8,9 +8,9 @@ A simple ASP.NET Core web application using redis cache for the [ASP.NET Core bu
 cf push -b https://github.com/cloudfoundry-community/dotnet-core-buildpack.git
 cf create-service p-redis shared-vm my-core-redis
 cf bind-service aspnet-core-visitcount my-core-redis
-cf restage aspnet-core-visitcount
+cf restart aspnet-core-visitcount
 
-Browse application url (my url look like http://aspnet-core-visitcount.local.pcfdev.io/)
+Browse application url (my pcfdev url look like http://aspnet-core-visitcount.local.pcfdev.io/)
 ```
 
 ## Run the app locally
@@ -21,6 +21,9 @@ Browse application url (my url look like http://aspnet-core-visitcount.local.pcf
 + Run `dotnet restore`
 + Run `dotnet run`
 + Access the running app in a browser at [http://localhost:5000](http://localhost:5000)
+
+## Note
+Application is reading 1st redis config entry for convianance purpose from Environment "VCAP_SERVICES", please check CachManager.cs.
 
 Thanks to [Patrick Crocker aspnet-core-helloworld][].
 

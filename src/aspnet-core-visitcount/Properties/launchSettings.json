@@ -20,7 +20,7 @@
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000",
       "environmentVariables": {
-        "VCAP_SERVICES": "{\"p-redis\":[{\"credentials\":{\"host\":\"redis.local.pcfdev.io\",\"password\":\"a9f5d25e-39bd-40d3-9326-2ccb7be58b8a\",\"port\":36053},\"syslog_drain_url\":null,\"label\":\"p-redis\",\"provider\":null,\"plan\":\"shared-vm\",\"name\":\"core-redis\",\"tags\":[\"pivotal\",\"redis\"]}]}",
+        "VCAP_SERVICES": "{\"p-redis\":[{\"credentials\":{\"host\":\"redis.local.pcfdev.io\",\"password\":\"28dcdccb-65ca-4add-8ae1-aa419c936ce8\",\"port\":46564},\"syslog_drain_url\":null,\"label\":\"p-redis\",\"provider\":null,\"plan\":\"shared-vm\",\"name\":\"my-core-redis\",\"tags\":[\"pivotal\",\"redis\"]}]}",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }

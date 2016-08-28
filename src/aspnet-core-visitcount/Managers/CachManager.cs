@@ -90,9 +90,11 @@ namespace aspnet_core_visitcount.Managers
             string port = jsonResponse["p-redis"][0]["credentials"].port;
 
             string ip = GetIpFromHost(host);
-            string connectionStringFormat = "{0}:{1},password={2}";
-            connectionString = string.Format(connectionStringFormat, ip, port, password);
-
+            connectionString = ip + ":" + port;
+            if (!string.IsNullOrWhiteSpace(password))
+            {
+                connectionString = connectionString + ",password=" + password;
+            }
             Console.WriteLine("[redis-connectionString] {0}", connectionString);
             return connectionString;
         }
