@@ -17,7 +17,7 @@ cf push -b https://github.com/cloudfoundry-community/dotnet-core-buildpack.git
 + Run `dotnet run`
 + Access the running app in a browser at [http://localhost:5000](http://localhost:5000)
 
-Thanks to [Patrick Crocker aspnet-core-helloworld][Patrick Crocker]
+Thanks to [Patrick Crocker aspnet-core-helloworld][].
 
 [Getting Started]: http://docs.asp.net/en/latest/getting-started/index.html
 [ASP.NET Core buildpack]: https://github.com/cloudfoundry-community/asp.net5-buildpack
