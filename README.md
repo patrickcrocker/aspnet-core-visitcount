@@ -24,10 +24,10 @@ Browse application url (my pcfdev url look like http://aspnet-core-visitcount.lo
 + Access the running app in a browser at [http://localhost:5000](http://localhost:5000)
 
 ## Note
-Application is reading 1st redis config entry for convianance purpose from Environment "VCAP_SERVICES", please check CachManager.cs.
+Application is reading 1st redis config entry for a convianance purpose from Environment variable "VCAP_SERVICES", please check CachManager.cs.
 
-Thanks to [Patrick Crocker aspnet-core-helloworld][].
+Thanks to [Patrick Crocker][] for all his help.
 
 [Getting Started]: http://docs.asp.net/en/latest/getting-started/index.html
 [ASP.NET Core buildpack]: https://github.com/cloudfoundry-community/asp.net5-buildpack
-[Patrick Crocker aspnet-core-helloworld]: https://github.com/patrickcrocker/aspnet-core-helloworld
+[Patrick Crocker]: https://github.com/patrickcrocker
