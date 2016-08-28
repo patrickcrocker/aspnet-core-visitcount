@@ -1,4 +1,4 @@
-# Cloud Foundry ASP.NET Core Visit Count
+# Cloud Foundry ASP.NET Core - Visit Count sample application using redis cache
 
 A simple ASP.NET Core web application using redis cache for the [ASP.NET Core buildpack][].
 
