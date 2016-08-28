@@ -5,6 +5,7 @@ A simple ASP.NET Core web application using redis cache for the [ASP.NET Core bu
 ## Push to Cloud Foundry
 
 ```
+git clone https://github.com/priyakantpatel/aspnet-core-visitcount.git
 cf push -b https://github.com/cloudfoundry-community/dotnet-core-buildpack.git
 cf create-service p-redis shared-vm my-core-redis
 cf bind-service aspnet-core-visitcount my-core-redis
